@@ -37,7 +37,7 @@ module EFK
 		Type = Drainable,
 		UseDelta = 0.34,
 		UseWhileEquipped = FALSE,
-		DisplayNam = Hemostatic Applicator,
+		DisplayName = Hemostatic Applicator,
 		Icon = EFK_HemostaticApplicator,
 		Weight = 0.043,
  		Tooltip = Tooltip_UseOnHealthPanel,
