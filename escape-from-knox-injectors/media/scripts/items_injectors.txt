@@ -1,0 +1,46 @@
+module EFK
+{
+	imports
+	{
+		Base
+	}
+
+	item Propital
+	{
+		DisplayCategory = FirstAid,
+		Type = Normal,
+		DisplayName = Propital Regenerative Stimulant Injector,
+		Icon = EFK_Propital,
+		Weight = 0.05,
+		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+		Tags = Injector,
+	}
+
+	item Zagustin
+	{
+		DisplayCategory = FirstAid,
+		Type = Normal,
+		DisplayName = Zagustin Hemostatic Drug Injector,
+		Icon = EFK_Zagustin,
+		Weight = 0.05,
+		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+		Tags = Injector,
+	}
+
+	item SJ1
+	{
+		DisplayCategory = FirstAid,
+		Type = Normal,
+		DisplayName = SJ1 TGLabs Combat Stimulant Injector,
+		Icon = EFK_SJ1,
+		Weight = 0.05,
+		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+		Tags = Injector,
+	}
+}
