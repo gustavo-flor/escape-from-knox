@@ -31,7 +31,7 @@ function EFKApplyInjector:perform()
     ISBaseTimedAction.perform(self)
     self.item:setJobDelta(0.0)
     self.character:getXp():AddXP(Perks.Doctor, 5)
-    print(item:getName() .. " Injected")
+    print(self.item:getName() .. " Injected")
     self.character:getInventory():Remove(self.item)
 end
 
