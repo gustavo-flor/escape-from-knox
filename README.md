@@ -10,5 +10,5 @@ A Zomboid mod based on Escape From Tarkov.
 ## Development
 
 ```sh
-mklink /J C:\Users\Flôr\Zomboid\mods\escape-from-knox-first-aids ./escape-from-knox-first-aids
+./install.sh <path-to-zomboid-mods-folder>
 ```

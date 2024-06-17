@@ -2,7 +2,7 @@
 
 if [ -z "$1" ]; then
     echo "Error: Path to Zomboid's mods folder is required."
-    echo "Usage: $0 <path-to-mods-folder>"
+    echo "Usage: $0 <path-to-zomboid-mods-folder>"
     exit 1
 fi
 
