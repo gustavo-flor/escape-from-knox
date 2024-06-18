@@ -30,26 +30,26 @@ end
 local injectorAppliers = {}
 
 injectorAppliers["EFK.Propital"] = function(character)
-    -- local duration = 0
-    -- local maxDuration = 30
-    -- local function regenerateHealth()
-    --     local currentHealth = character:getBodyDamage():getHealth()
-    --     local maxHealth = 100
-    --     local regenAmount = 2.4
-    --     if currentHealth < maxHealth then
-    --         local bodyParts = character:getBodyDamage():getBodyParts()
-    --         for i=1, bodyParts:size() do
-    --             local bodyPart = bodyParts:get(i-1)
-    --             bodyPart:AddHealth(regenAmount)
-    --         end
-    --     end
-    --     duration = duration + 1
-    --     if duration >= maxDuration then
-    --         Events.EveryOneMinute.Remove(regenerateHealth)
-    --         duration = 0
-    --     end
-    -- end
-    -- Events.EveryOneMinute.Add(regenerateHealth)
+    local duration = 0
+    local maxDuration = 30
+    local function regenerateHealth()
+        local currentHealth = character:getBodyDamage():getHealth()
+        local maxHealth = 100
+        local regenAmount = 2.4
+        if currentHealth < maxHealth then
+            local bodyParts = character:getBodyDamage():getBodyParts()
+            for i=1, bodyParts:size() do
+                local bodyPart = bodyParts:get(i-1)
+                bodyPart:AddHealth(regenAmount)
+            end
+        end
+        duration = duration + 1
+        if duration >= maxDuration then
+            Events.EveryOneMinute.Remove(regenerateHealth)
+            duration = 0
+        end
+    end
+    Events.EveryOneMinute.Add(regenerateHealth)
 end
 
 injectorAppliers["EFK.Zagustin"] = function(character)

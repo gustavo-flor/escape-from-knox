@@ -25,4 +25,4 @@ local function addApplyInjectorOption(playerId, context, items)
     end
 end
 
-Events.OnFillInventoryObjectContextMenu.Add(AddApplyInjectorOption)
+Events.OnFillInventoryObjectContextMenu.Add(addApplyInjectorOption)
