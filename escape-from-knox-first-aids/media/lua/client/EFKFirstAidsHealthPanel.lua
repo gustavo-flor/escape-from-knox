@@ -1,10 +1,10 @@
 require "TimedActions/EFKApplyHemostatic"
 
-local function QueueApplyHemostatic(player, item, bodyPart)
+local function queueApplyHemostatic(player, item, bodyPart)
     ISTimedActionQueue.add(EFKApplyHemostatic:new(player, item, bodyPart))
 end
 
-local function AddApplyHemostaticOption(playerId, context, items)
+local function addApplyHemostaticOption(playerId, context, items)
     local hasHemostatic = false
     local hemostaticItems = {}
     for _,item in ipairs(items) do
@@ -41,9 +41,9 @@ local function AddApplyHemostaticOption(playerId, context, items)
         context:addSubMenu(option, subMenu)
         for _,bodyPart in ipairs(heavyBleedingBodyParts) do
             local label = BodyPartType.getDisplayName(bodyPart:getType())
-            subMenu:addOption(label, player, QueueApplyHemostatic, item, bodyPart)
+            subMenu:addOption(label, player, queueApplyHemostatic, item, bodyPart)
         end
     end
 end
 
-Events.OnFillInventoryObjectContextMenu.Add(AddApplyHemostaticOption)
+Events.OnFillInventoryObjectContextMenu.Add(addApplyHemostaticOption)

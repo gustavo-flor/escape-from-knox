@@ -43,7 +43,6 @@ function EFKApplyHemostatic:perform()
     end
     self.bodyPart:setDeepWoundTime(0)
     self.bodyPart:setDeepWounded(false)
-    self.bodyPart:setBleedingTime(0)
     local usedDelta = 0
     if self.item:IsDrainable() then
         usedDelta = self.item:getUsedDelta() - self.item:getUseDelta()

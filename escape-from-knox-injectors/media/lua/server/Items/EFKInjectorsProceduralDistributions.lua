@@ -6,20 +6,20 @@ function setProceduralDistribution(placeName, itemName, spawnChance)
     table.insert(places[placeName].items, spawnChance)    
 end
 
-setProceduralDistribution("ArmyStorageMedical", "EFK.Propital", 0.10)
+local spawnChanceByItem = {
+    ["EFK.Propital"] = 0.05,
+    ["EFK.Zagustin"] = 0.05,
+    ["EFK.SJ1"] = 0.05
+}
 
-setProceduralDistribution("MedicalClinicDrugs", "EFK.Propital", 0.10)
-
-setProceduralDistribution("MedicalClinicOutfit", "EFK.Propital", 0.10)
-
-setProceduralDistribution("MedicalClinicTools", "EFK.Propital", 0.10)
-
-setProceduralDistribution("MedicalStorageDrugs", "EFK.Propital", 0.10)
-
-setProceduralDistribution("MedicalStorageOutfit", "EFK.Propital", 0.10)
-
-setProceduralDistribution("MedicalStorageTools", "EFK.Propital", 0.10)
-
-setProceduralDistribution("SafehouseMedical", "EFK.Propital", 0.10)
-
-setProceduralDistribution("TestingLab", "EFK.Propital", 0.10)
+for item, spawnChance in pairs(spawnChanceByItem) do
+    setProceduralDistribution("ArmyStorageMedical", item, spawnChance)
+    setProceduralDistribution("MedicalClinicDrugs", item, spawnChance)
+    setProceduralDistribution("MedicalClinicOutfit", item, spawnChance)
+    setProceduralDistribution("MedicalClinicTools", item, spawnChance)
+    setProceduralDistribution("MedicalStorageDrugs", item, spawnChance)
+    setProceduralDistribution("MedicalStorageOutfit", item, spawnChance)
+    setProceduralDistribution("MedicalStorageTools", item, spawnChance)
+    setProceduralDistribution("SafehouseMedical", item, spawnChance)
+    setProceduralDistribution("TestingLab", item, spawnChance)
+end

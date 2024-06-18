@@ -1,10 +1,10 @@
 require "TimedActions/EFKApplyInjector"
 
-local function QueueApplyInjector(player, item)
+local function queueApplyInjector(player, item)
     ISTimedActionQueue.add(EFKApplyInjector:new(player, item))
 end
 
-local function AddApplyInjectorOption(playerId, context, items)
+local function addApplyInjectorOption(playerId, context, items)
     local hasInjector = false
     local injectorItems = {}
     for _,item in ipairs(items) do
@@ -21,7 +21,7 @@ local function AddApplyInjectorOption(playerId, context, items)
     local player = getSpecificPlayer(playerId)
 
     for _,item in ipairs(injectorItems) do
-        local option = context:addOption("Apply " .. item:getName(), player, QueueApplyInjector, item)
+        local option = context:addOption("Apply " .. item:getName(), player, queueApplyInjector, item)
     end
 end
 
