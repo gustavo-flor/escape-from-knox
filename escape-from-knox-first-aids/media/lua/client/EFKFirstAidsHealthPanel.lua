@@ -4,7 +4,7 @@ local function QueueApplyHemostatic(player, item, bodyPart)
     ISTimedActionQueue.add(EFKApplyHemostatic:new(player, item, bodyPart))
 end
 
-local function AddApplyOption(playerId, context, items)
+local function AddApplyHemostaticOption(playerId, context, items)
     local hasHemostatic = false
     local hemostaticItems = {}
     for _,item in ipairs(items) do
@@ -46,4 +46,4 @@ local function AddApplyOption(playerId, context, items)
     end
 end
 
-Events.OnFillInventoryObjectContextMenu.Add(AddApplyOption)
+Events.OnFillInventoryObjectContextMenu.Add(AddApplyHemostaticOption)

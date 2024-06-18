@@ -4,7 +4,7 @@ local function QueueApplyInjector(player, item)
     ISTimedActionQueue.add(EFKApplyInjector:new(player, item))
 end
 
-local function AddApplyOption(playerId, context, items)
+local function AddApplyInjectorOption(playerId, context, items)
     local hasInjector = false
     local injectorItems = {}
     for _,item in ipairs(items) do
@@ -25,4 +25,4 @@ local function AddApplyOption(playerId, context, items)
     end
 end
 
-Events.OnFillInventoryObjectContextMenu.Add(AddApplyOption)
+Events.OnFillInventoryObjectContextMenu.Add(AddApplyInjectorOption)

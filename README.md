@@ -9,6 +9,14 @@ A Zomboid mod based on Escape From Tarkov.
 
 ## Development
 
+- **MacOS** / **Linux**
+
 ```sh
 ./install.sh <path-to-zomboid-mods-folder>
+```
+
+- **Windows**
+
+```sh
+install.bat <path-to-zomboid-mods-folder>
 ```
