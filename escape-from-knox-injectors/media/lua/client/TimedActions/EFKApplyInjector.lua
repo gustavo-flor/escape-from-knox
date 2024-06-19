@@ -30,16 +30,28 @@ end
 local injectorAppliers = {}
 
 injectorAppliers["EFK.Propital"] = function(character)
-    local duration = 0
     local maxDuration = 30
+    local totalRegenAmount = 2.4
+    local maxHealth = 100
+    local duration = 0
     local function regenerateHealth()
         local currentHealth = character:getBodyDamage():getHealth()
-        local maxHealth = 100
         local regenAmount = 2.4
+        local damagedBodyParts = {}
+        local damagedBodyPartsAmount = 0
         if currentHealth < maxHealth then
             local bodyParts = character:getBodyDamage():getBodyParts()
             for i=1, bodyParts:size() do
                 local bodyPart = bodyParts:get(i-1)
+                if bodyPart:getHealth() < maxHealth then
+                    damagedBodyPartsAmount = damagedBodyPartsAmount + 1
+                    table.insert(damagedBodyParts, bodyPart)
+                end
+            end
+        end
+        if damagedBodyPartsAmount > 0 then
+            local regenAmount = totalRegenAmount / damagedBodyPartsAmount
+            for _,bodyPart in ipairs(damagedBodyParts) do
                 bodyPart:AddHealth(regenAmount)
             end
         end
@@ -56,6 +68,7 @@ injectorAppliers["EFK.Zagustin"] = function(character)
     local bodyParts = character:getBodyDamage():getBodyParts()
     for i=1, bodyParts:size() do
         local bodyPart = bodyParts:get(i-1)
+        print(bodyPart:getHealth())
         if bodyPart:bleeding() then
             bodyPart:setBleedingTime(0)
         end
