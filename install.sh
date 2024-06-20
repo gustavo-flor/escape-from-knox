@@ -14,3 +14,6 @@ ln -s "$EFK_HOME/escape-from-knox-first-aids" "$ZOMBOID_MODS_FOLDER/escape-from-
 
 mkdir "$ZOMBOID_MODS_FOLDER/escape-from-knox-injectors"
 ln -s "$EFK_HOME/escape-from-knox-injectors" "$ZOMBOID_MODS_FOLDER/escape-from-knox-injectors"
+
+mkdir "$ZOMBOID_MODS_FOLDER/escape-from-knox-health-system"
+ln -s "$EFK_HOME/escape-from-knox-health-system" "$ZOMBOID_MODS_FOLDER/escape-from-knox-health-system"

@@ -4,6 +4,7 @@ A Zomboid mod based on Escape From Tarkov.
 
 ## Modules
 
+- Health System
 - First Aids
 - Injectors and Stimulants
 

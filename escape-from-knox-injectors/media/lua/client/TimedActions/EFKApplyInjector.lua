@@ -29,44 +29,13 @@ end
 
 local injectorAppliers = {}
 
-local maxHealth = 100
-local function distributeHealth(character, regenAmount)
-    local bodyDamage = character:getBodyDamage()
-    local currentHealth = bodyDamage:getHealth()
-    local damagedBodyParts = {}
-    local damagedBodyPartsAmount = 0
-    if currentHealth < maxHealth then
-        local bodyParts = bodyDamage:getBodyParts()
-        for i=0, bodyParts:size()-1 do
-            local bodyPart = bodyParts:get(i)
-            if bodyPart:getHealth() < maxHealth then
-                damagedBodyPartsAmount = damagedBodyPartsAmount + 1
-                table.insert(damagedBodyParts, bodyPart)
-            end
-        end
-    end
-    local rest = regenAmount
-    if damagedBodyPartsAmount > 0 then
-        local regenAmountByPart = regenAmount / damagedBodyPartsAmount
-        for _,bodyPart in ipairs(damagedBodyParts) do
-            local maxToReceive = maxHealth - bodyPart:getHealth()
-            local used = math.min(maxToReceive, regenAmountByPart)
-            bodyPart:AddHealth(used)
-            rest = rest - used
-        end
-    end
-    if rest > 0 then
-        distributeHealth(character, rest)
-    end
-end
-
 injectorAppliers["EFK.Propital"] = function(character)
     -- health regeneration
     local regenMaxDuration = 30
     local regenDuration = 0
     local totalRegenAmount = 2.4
     local function healthRegeneration()
-        distributeHealth(character, totalRegenAmount)
+        character:getBodyDamage():AddGeneralHealth(totalRegenAmount)
         regenDuration = regenDuration + 1
         if regenDuration >= regenMaxDuration then
             Events.EveryOneMinute.Remove(healthRegeneration)

@@ -12,5 +12,6 @@ for %%i in (".\") do set efkHome="%%~fi"
 
 mklink /J "%zomboidModsFolder%escape-from-knox-first-aids" "%efkHome%escape-from-knox-first-aids"
 mklink /J "%zomboidModsFolder%escape-from-knox-injectors" "%efkHome%escape-from-knox-injectors"
+mklink /J "%zomboidModsFolder%escape-from-knox-health-system" "%efkHome%escape-from-knox-health-system"
 
 endlocal
