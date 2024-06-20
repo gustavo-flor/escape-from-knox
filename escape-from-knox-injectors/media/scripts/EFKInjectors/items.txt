@@ -22,12 +22,12 @@ module EFK
 		AcceptItemFunction = AcceptItemFunction.InjectorCase,
 	}
 
-	item Propital
+	item PropitalInjector
 	{
 		DisplayCategory = FirstAid,
 		Type = Normal,
 		DisplayName = Propital Regenerative Stimulant Injector,
-		Icon = EFK_Propital,
+		Icon = EFK_PropitalInjector,
 		Weight = 0.05,
 		Tooltip = Tooltip_UseOnHealthPanel,
 		Medical = TRUE,
@@ -35,12 +35,12 @@ module EFK
 		Tags = Injector,
 	}
 
-	item Zagustin
+	item ZagustinInjector
 	{
 		DisplayCategory = FirstAid,
 		Type = Normal,
 		DisplayName = Zagustin Hemostatic Drug Injector,
-		Icon = EFK_Zagustin,
+		Icon = EFK_ZagustinInjector,
 		Weight = 0.05,
 		Tooltip = Tooltip_UseOnHealthPanel,
 		Medical = TRUE,
@@ -48,12 +48,12 @@ module EFK
 		Tags = Injector,
 	}
 
-	item SJ1
+	item SJ1Injector
 	{
 		DisplayCategory = FirstAid,
 		Type = Normal,
 		DisplayName = SJ1 TGLabs Combat Stimulant Injector,
-		Icon = EFK_SJ1,
+		Icon = EFK_SJ1Injector,
 		Weight = 0.05,
 		Tooltip = Tooltip_UseOnHealthPanel,
 		Medical = TRUE,

@@ -29,7 +29,7 @@ end
 
 local injectorAppliers = {}
 
-injectorAppliers["EFK.Propital"] = function(character)
+injectorAppliers["EFK.PropitalInjector"] = function(character)
     -- health regeneration
     local regenMaxDuration = 30
     local regenDuration = 0
@@ -59,7 +59,7 @@ injectorAppliers["EFK.Propital"] = function(character)
     Events.EveryOneMinute.Add(onPainkillers)
 end
 
-injectorAppliers["EFK.Zagustin"] = function(character)
+injectorAppliers["EFK.ZagustinInjector"] = function(character)
     local bodyParts = character:getBodyDamage():getBodyParts()
     for i=0, bodyParts:size()-1 do
         local bodyPart = bodyParts:get(i)
@@ -74,7 +74,7 @@ injectorAppliers["EFK.Zagustin"] = function(character)
     end
 end
 
-injectorAppliers["EFK.SJ1"] = function(character)
+injectorAppliers["EFK.SJ1Injector"] = function(character)
     local stats = character:getStats()
     stats:setStress(stats:getStress() - 0.2)
     if stats:getStress() < 0 then

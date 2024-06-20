@@ -7,9 +7,9 @@ function setProceduralDistribution(placeName, itemName, spawnChance)
 end
 
 local spawnChanceByItem = {
-    ["EFK.Propital"] = 0.05,
-    ["EFK.Zagustin"] = 0.05,
-    ["EFK.SJ1"] = 0.05
+    ["EFK.PropitalInjector"] = 0.05,
+    ["EFK.ZagustinInjector"] = 0.05,
+    ["EFK.SJ1Injector"] = 0.05
 }
 
 for item, spawnChance in pairs(spawnChanceByItem) do

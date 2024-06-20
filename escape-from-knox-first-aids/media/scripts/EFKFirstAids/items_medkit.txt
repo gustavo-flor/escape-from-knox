@@ -1,0 +1,97 @@
+module EFK
+{
+	imports
+	{
+		Base
+	}
+
+	item AI2Medkit
+	{
+		DisplayCategory = FirstAid,
+		Type = Drainable,
+		UseDelta = 0.01,
+		UseWhileEquipped = FALSE,
+		DisplayName = AI-2 Medkit,
+		Icon = EFK_GrizzlyMedicalKit,
+		Weight = 0.135,
+ 		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+		Tags = Medkit,
+	}
+
+    item CarFirstAidKit
+	{
+		DisplayCategory = FirstAid,
+		Type = Drainable,
+		UseDelta = 0.00454,
+		UseWhileEquipped = FALSE,
+		DisplayName = Car First Aid Kit,
+		Icon = EFK_GrizzlyMedicalKit,
+		Weight = 1,
+ 		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+		Tags = Medkit,
+	}
+
+    item SalewaFirstAidKit
+	{
+		DisplayCategory = FirstAid,
+		Type = Drainable,
+		UseDelta = 0.0025,
+		UseWhileEquipped = FALSE,
+		DisplayName = Salewa First Aid Kit,
+		Icon = EFK_GrizzlyMedicalKit,
+		Weight = 0.6,
+ 		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+		Tags = Medkit,
+	}
+
+    item IndividualFirstAidKit
+	{
+		DisplayCategory = FirstAid,
+		Type = Drainable,
+		UseDelta = 0.00333,
+		UseWhileEquipped = FALSE,
+		DisplayName = IFAK,
+		Icon = EFK_GrizzlyMedicalKit,
+		Weight = 0.5,
+ 		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+		Tags = Medkit,
+	}
+
+    item TacticalIndividualFirstAidKit
+	{
+		DisplayCategory = FirstAid,
+		Type = Drainable,
+		UseDelta = 0.0025,
+		UseWhileEquipped = FALSE,
+		DisplayName = AFAK,
+		Icon = EFK_GrizzlyMedicalKit,
+		Weight = 0.8,
+ 		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+		Tags = Medkit,
+	}
+
+    item GrizzlyMedicalKit
+	{
+		DisplayCategory = FirstAid,
+		Type = Drainable,
+		UseDelta = 0.00055,
+		UseWhileEquipped = FALSE,
+		DisplayName = Grizzly Medical Kit,
+		Icon = EFK_GrizzlyMedicalKit,
+		Weight = 1.6,
+ 		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+		Tags = Medkit,
+	}
+}
