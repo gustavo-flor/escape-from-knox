@@ -37,7 +37,7 @@ local function addApplyHemostaticOption(playerId, context, items)
     end
 
     for _,item in ipairs(hemostaticItems) do
-        local option = context:addOption("Apply " .. item:getName(), nil)
+        local option = context:addOption(getText("ContextMenu_Apply_Hemostatic"), nil)
         local subMenu = context:getNew(context)
         context:addSubMenu(option, subMenu)
         for _,bodyPart in ipairs(heavyBleedingBodyParts) do
@@ -86,7 +86,7 @@ local function addUseMedkitOption(playerId, context, items)
     end
 
     for _,item in ipairs(medkitItems) do
-        local option = context:addOption("Heal", nil)
+        local option = context:addOption(getText("ContextMenu_Apply_Medkit"), nil)
         local subMenu = context:getNew(context)
         context:addSubMenu(option, subMenu)
         for _,bodyPart in ipairs(damagedBodyParts) do

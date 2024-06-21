@@ -7,7 +7,7 @@ module EFK
 
 	item AI2Medkit
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = Medkit,
 		Type = Drainable,
 		UseDelta = 0.01,
 		UseWhileEquipped = FALSE,
@@ -22,7 +22,7 @@ module EFK
 
     item CarFirstAidKit
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = Medkit,
 		Type = Drainable,
 		UseDelta = 0.00454,
 		UseWhileEquipped = FALSE,
@@ -37,7 +37,7 @@ module EFK
 
     item SalewaFirstAidKit
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = Medkit,
 		Type = Drainable,
 		UseDelta = 0.0025,
 		UseWhileEquipped = FALSE,
@@ -52,7 +52,7 @@ module EFK
 
     item IndividualFirstAidKit
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = Medkit,
 		Type = Drainable,
 		UseDelta = 0.00333,
 		UseWhileEquipped = FALSE,
@@ -67,7 +67,7 @@ module EFK
 
     item TacticalIndividualFirstAidKit
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = Medkit,
 		Type = Drainable,
 		UseDelta = 0.0025,
 		UseWhileEquipped = FALSE,
@@ -82,7 +82,7 @@ module EFK
 
     item GrizzlyMedicalKit
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = Medkit,
 		Type = Drainable,
 		UseDelta = 0.00055,
 		UseWhileEquipped = FALSE,

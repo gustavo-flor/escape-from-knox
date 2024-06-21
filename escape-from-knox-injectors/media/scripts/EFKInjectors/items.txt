@@ -24,7 +24,7 @@ module EFK
 
 	item PropitalInjector
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = Stimulant,
 		Type = Normal,
 		DisplayName = Propital Regenerative Stimulant Injector,
 		Icon = EFK_PropitalInjector,
@@ -37,7 +37,7 @@ module EFK
 
 	item ZagustinInjector
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = Stimulant,
 		Type = Normal,
 		DisplayName = Zagustin Hemostatic Drug Injector,
 		Icon = EFK_ZagustinInjector,
@@ -50,7 +50,7 @@ module EFK
 
 	item SJ1Injector
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = Stimulant,
 		Type = Normal,
 		DisplayName = SJ1 TGLabs Combat Stimulant Injector,
 		Icon = EFK_SJ1Injector,

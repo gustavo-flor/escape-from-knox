@@ -1,0 +1,5 @@
+ContextMenu_PTBR = {
+    ContextMenu_Hemostatic = "Hemostático",
+    ContextMenu_Apply_Hemostatic = "Aplicar Hemostático",
+    ContextMenu_Apply_Medkit = "Curar",
+}

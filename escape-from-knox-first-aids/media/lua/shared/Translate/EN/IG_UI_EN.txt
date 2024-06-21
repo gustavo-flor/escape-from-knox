@@ -1,0 +1,5 @@
+IGUI_EN = {
+    IGUI_ItemCat_InjuryTreatment = "Injury Treatment",
+    IGUI_ItemCat_Drug = "Drug",
+    IGUI_ItemCat_Medkit = "Medkit",
+}

@@ -7,7 +7,7 @@ module EFK
 
 	item EsmarchTourniquet
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = InjuryTreatment,
 		Type = Normal,
 		DisplayName = Esmarch Tourniquet,
 		Icon = EFK_EsmarchTourniquet,
@@ -20,7 +20,7 @@ module EFK
 
 	item HemostaticTourniquet
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = InjuryTreatment,
 		Type = Normal,
 		DisplayName = Hemostatic Tourniquet,
 		Icon = EFK_HemostaticTourniquet,
@@ -33,7 +33,7 @@ module EFK
 
 	item HemostaticApplicator
 	{
-		DisplayCategory = FirstAid,
+		DisplayCategory = InjuryTreatment,
 		Type = Drainable,
 		UseDelta = 0.34,
 		UseWhileEquipped = FALSE,
@@ -44,5 +44,32 @@ module EFK
 		Medical = TRUE,
 		WorldStaticModel = Bandage,
 		Tags = Hemostatic,
+	}
+
+	item ImmobilizingSplint
+	{
+		DisplayCategory = InjuryTreatment,
+		Weight = 0.17,
+		Type = Normal,
+		DisplayName = Immobilizing Splint,
+		Icon = EFK_Splint,
+		Tooltip = Tooltip_Splint,
+		Medical = TRUE,
+		WorldStaticModel = Splint,
+		Tags = Splint,
+	}
+
+	item AluminumSplint
+	{
+		DisplayCategory = InjuryTreatment,
+		Weight = 0.22,
+		Type = Drainable,
+		UseDelta = 0.2,
+		DisplayName	= Aluminum Splint,
+		Icon = EFK_AluminumSplint,
+		Tooltip = Tooltip_Splint,
+		Medical = TRUE,
+		WorldStaticModel = Splint,
+		Tags = Splint
 	}
 }

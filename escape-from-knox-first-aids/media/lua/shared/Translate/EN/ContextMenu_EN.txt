@@ -1,0 +1,5 @@
+ContextMenu_EN = {
+    ContextMenu_Hemostatic = "Hemostatic",
+    ContextMenu_Apply_Hemostatic = "Apply Hemostatic",
+    ContextMenu_Apply_Medkit = "Heal",
+}

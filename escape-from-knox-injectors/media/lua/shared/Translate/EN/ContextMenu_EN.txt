@@ -1,0 +1,3 @@
+ContextMenu = {
+    ContextMenu_Apply_Injector = "Apply Injector",
+}

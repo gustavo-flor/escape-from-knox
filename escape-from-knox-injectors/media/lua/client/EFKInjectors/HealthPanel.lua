@@ -21,7 +21,7 @@ local function addApplyInjectorOption(playerId, context, items)
     local player = getSpecificPlayer(playerId)
 
     for _,item in ipairs(injectorItems) do
-        local option = context:addOption("Apply " .. item:getName(), player, queueApplyInjector, item)
+        local option = context:addOption(getText("ContextMenu_Apply_Injector"), player, queueApplyInjector, item)
     end
 end
 
