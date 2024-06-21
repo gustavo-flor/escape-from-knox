@@ -1,4 +1,4 @@
-local function disableAddGeneralHealth(playerIndex, player)
+local function disablePassiveHealthRegeneration(playerIndex, player)
 	local bodyDamage = player:getBodyDamage()
     bodyDamage:setStandardHealthAddition(0)
     bodyDamage:setReducedHealthAddition(0)
@@ -7,4 +7,4 @@ local function disableAddGeneralHealth(playerIndex, player)
     bodyDamage:setHealthFromFood(0)
 end
 
-Events.OnCreatePlayer.Add(disableAddGeneralHealth)
+Events.OnCreatePlayer.Add(disablePassiveHealthRegeneration)
