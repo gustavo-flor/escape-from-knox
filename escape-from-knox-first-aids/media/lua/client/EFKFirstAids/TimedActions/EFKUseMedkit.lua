@@ -1,4 +1,5 @@
 require "TimedActions/ISBaseTimedAction"
+require "EFKFirstAids/Medkits"
 
 EFKUseMedkit = ISBaseTimedAction:derive("EFKUseMedkit")
 
@@ -31,16 +32,9 @@ function EFKUseMedkit:stop()
     self.item:setJobDelta(0.0)
 end
 
-local healthProportion = 4.4
-local maxHealth = 100
-local medkitMaxHealPerUse = {
-    ["EFK.AI2Medkit"] = 50,
-    ["EFK.CarFirstAidKit"] = 70,
-    ["EFK.SalewaFirstAidKit"] = 85,
-    ["EFK.IndividualFirstAidKit"] = 50,
-    ["EFK.TacticalIndividualFirstAidKit"] = 60,
-    ["EFK.GrizzlyMedicalKit"] = 175
-}
+local knoxHealth = 440
+local zomboidHealth = 1700
+local healthProportion = knoxHealth / zomboidHealth
 
 function EFKUseMedkit:perform()
     ISBaseTimedAction.perform(self)
@@ -51,9 +45,9 @@ function EFKUseMedkit:perform()
     if self.bodyPart:isGetBandageXp() then
         self.character:getXp():AddXP(Perks.Doctor, 5)
     end
-    local maxHealPerUse = medkitMaxHealPerUse[self.item:getFullType()]
-    local regenAmount = math.min(maxHealPerUse / healthProportion, maxHealth - self.bodyPart:getHealth())
-    print(regenAmount)
+    local maxHealPerUse = self.medkit.maxHealPerUse / healthProportion
+    local missingLife = 100 - self.bodyPart:getHealth()
+    local regenAmount = math.min(maxHealPerUse, missingLife)
     self.bodyPart:AddHealth(regenAmount)
     local usedDelta = self.item:getUsedDelta() - (self.item:getUseDelta() * regenAmount * healthProportion)
     self.item:setUsedDelta(usedDelta)
@@ -63,25 +57,16 @@ function EFKUseMedkit:perform()
     ISHealthPanel.setBodyPartActionForPlayer(self.character, self.bodyPart, nil, nil, nil)
 end
 
-local ticksPerSecond = 60
-local medkitMaxTimes = {
-    ["EFK.AI2Medkit"] = 2 * ticksPerSecond,
-    ["EFK.CarFirstAidKit"] = 3 * ticksPerSecond,
-    ["EFK.SalewaFirstAidKit"] = 3 * ticksPerSecond,
-    ["EFK.IndividualFirstAidKit"] = 3 * ticksPerSecond,
-    ["EFK.TacticalIndividualFirstAidKit"] = 3 * ticksPerSecond,
-    ["EFK.GrizzlyMedicalKit"] = 5 * ticksPerSecond
-}
-
 function EFKUseMedkit:new(character, item, bodyPart)
     local o = {}
     setmetatable(o, self)
     self.__index = self
     o.character = character
     o.item = item
+    o.medkit = Medkits.items[item:getFullType()]
     o.bodyPart = bodyPart
     o.stopOnWalk = bodyPart:getIndex() > BodyPartType.ToIndex(BodyPartType.Groin)
     o.stopOnRun = true
-    o.maxTime = medkitMaxTimes[item:getFullType()]
+    o.maxTime = o.medkit.useTime
     return o
 end

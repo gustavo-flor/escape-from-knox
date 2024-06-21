@@ -1,4 +1,4 @@
-require 'Items/ProceduralDistributions'
+require "Items/ProceduralDistributions"
 
 function setProceduralDistribution(placeName, itemName, spawnChance)
     local places = ProceduralDistributions["list"]
