@@ -65,11 +65,105 @@ module EFK
 		Weight = 0.22,
 		Type = Drainable,
 		UseDelta = 0.2,
-		DisplayName	= Aluminum Splint,
+		DisplayName = Aluminum Splint,
 		Icon = EFK_AluminumSplint,
 		Tooltip = Tooltip_Splint,
 		Medical = TRUE,
 		WorldStaticModel = Splint,
 		Tags = Splint
+	}
+
+	item AsepticBandage
+	{
+		DisplayCategory = InjuryTreatment,
+		Weight = 0.04,
+		Type = Normal,
+		DisplayName = Aseptic Bandage,
+		Icon = EFK_AsepticBandage,
+		CanBandage = true,
+		BandagePower = 4,
+		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+		Tags = Bandage,
+	}
+
+	item ArmyBandage
+	{
+		DisplayCategory = InjuryTreatment,
+		Weight = 0.043,
+		Type = Drainable,
+		UseDelta = 0.5,
+		DisplayName = Army Bandage,
+		Icon = EFK_ArmyBandage,
+		CanBandage = true,
+		BandagePower = 4,
+		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Bandage,
+		Tags = Bandage,
+	}
+
+	item AnalginPainkillers
+	{
+		DisplayCategory = Drug,
+		Weight = 0.01,
+		Type = Drainable,
+		UseDelta = 0.25,
+		UseWhileEquipped = FALSE,
+		DisplayName = Analgin Painkillers,
+		Icon = EFK_AnalginPainkillers,
+		Tooltip = Tooltip_Painkillers,
+		StaticModel = PillBottle,
+		WorldStaticModel = PainKillers_Ground,
+		Medical = TRUE,
+		Tags = Painkiller,
+	}
+
+	item AugmentinAntibioticPills
+	{
+		DisplayCategory = Drug,
+		Weight = 0.07,
+		Type = Normal,
+		UseWhileEquipped = FALSE,
+		DisplayName = Augmentin Antibiotic Pills,
+		Icon = EFK_AugmentinAntibioticPills,
+		Tooltip = Tooltip_Painkillers,
+		StaticModel = PillBottle,
+		WorldStaticModel = PillBottleGround,
+		Medical = TRUE,
+		Tags = Painkiller,
+	}
+
+	item IbuprofenPainkillers
+	{
+		DisplayCategory = Drug,
+		Weight = 0.07,
+		Type = Drainable,
+		UseDelta = 0.06666,
+		UseWhileEquipped = FALSE,
+		DisplayName = Ibuprofen Painkillers,
+		Icon = EFK_IbuprofenPainkillers,
+		Tooltip = Tooltip_Painkillers,
+		StaticModel = PillBottle,
+		WorldStaticModel = PillBottleGround,
+		Medical = TRUE,
+		Tags = Painkiller,
+	}
+
+	item GoldenStarBalm
+	{
+		DisplayCategory = Drug,
+		Weight = 0.016,
+		Type = Drainable,
+		UseDelta = 0.1,
+		UseWhileEquipped = FALSE,
+		DisplayName = Golden Star Balm,
+		Icon = EFK_GoldenStarBalm,
+		Tooltip = Tooltip_Painkillers,
+		StaticModel = PillBottle,
+		WorldStaticModel = SleepingTablets_Ground,
+		Medical = TRUE,
+		Tags = Painkiller,
 	}
 }
