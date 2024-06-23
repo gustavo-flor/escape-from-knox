@@ -1,3 +1,4 @@
 IGUI_EN = {
     IGUI_ItemCat_Stimulant = "Stimulant",
+    IGUI_ItemCat_Drug = "Drug",
 }

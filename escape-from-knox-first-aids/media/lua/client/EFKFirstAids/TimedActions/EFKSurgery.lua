@@ -1,38 +1,38 @@
 require "TimedActions/ISBaseTimedAction"
 require "EFKFirstAids/InjuryTreatments"
 
-EFKApplyHemostatic = ISBaseTimedAction:derive("EFKApplyHemostatic")
+EFKSurgery = ISBaseTimedAction:derive("EFKSurgery")
 
-function EFKApplyHemostatic:isValid()
+function EFKSurgery:isValid()
     return self.character:getInventory():contains(self.item)
 end
 
-function EFKApplyHemostatic:waitToStart()
+function EFKSurgery:waitToStart()
     return false
 end
 
-function EFKApplyHemostatic:update()
+function EFKSurgery:update()
     self.item:setJobDelta(self:getJobDelta())
-    local jobType = getText("ContextMenu_Hemostatic")
+    local jobType = getText("ContextMenu_Surgical_Kit")
     ISHealthPanel.setBodyPartActionForPlayer(self.character, self.bodyPart, self, jobType, { bandage = true })
     self.character:setMetabolicTarget(Metabolics.LightDomestic)
 end
 
-function EFKApplyHemostatic:start()
+function EFKSurgery:start()
     self:setActionAnim(CharacterActionAnims.Bandage)
     self:setAnimVariable("BandageType", ISHealthPanel.getBandageType(self.bodyPart))
     self:setOverrideHandModels(nil, nil)
-    self.item:setJobType(getText("ContextMenu_Apply_Hemostatic"))
+    self.item:setJobType(getText("ContextMenu_Surgery"))
     self.item:setJobDelta(0.0)
 end
 
-function EFKApplyHemostatic:stop()
+function EFKSurgery:stop()
     ISHealthPanel.setBodyPartActionForPlayer(self.character, self.bodyPart, nil, nil, nil)
     ISBaseTimedAction.stop(self)
     self.item:setJobDelta(0.0)
 end
 
-function EFKApplyHemostatic:perform()
+function EFKSurgery:perform()
     ISBaseTimedAction.perform(self)
     self.item:setJobDelta(0.0)
     if self.character:HasTrait("Hemophobic") and self.bodyPart:getBleedingTime() > 0 then
@@ -41,20 +41,16 @@ function EFKApplyHemostatic:perform()
     if self.bodyPart:isGetBandageXp() then
         self.character:getXp():AddXP(Perks.Doctor, 5)
     end
-    self.bodyPart:setDeepWoundTime(0)
-    self.bodyPart:setDeepWounded(false)
-    local usedDelta = 0
-    if self.item:IsDrainable() then
-        usedDelta = self.item:getUsedDelta() - self.item:getUseDelta()
-        self.item:setUsedDelta(usedDelta)
-    end
+    self.bodyPart:AddHealth(1)
+    local usedDelta = self.item:getUsedDelta() - self.item:getUseDelta()
+    self.item:setUsedDelta(usedDelta)
     if usedDelta <= 0 then
         self.character:getInventory():Remove(self.item)
     end
     ISHealthPanel.setBodyPartActionForPlayer(self.character, self.bodyPart, nil, nil, nil)
 end
 
-function EFKApplyHemostatic:new(character, item, bodyPart)
+function EFKSurgery:new(character, item, bodyPart)
     local o = {}
     setmetatable(o, self)
     self.__index = self
@@ -63,6 +59,6 @@ function EFKApplyHemostatic:new(character, item, bodyPart)
     o.bodyPart = bodyPart
     o.stopOnWalk = bodyPart:getIndex() > BodyPartType.ToIndex(BodyPartType.Groin)
     o.stopOnRun = true
-    o.maxTime = InjuryTreatments.hemostatics[item:getFullType()].useTime
+    o.maxTime = InjuryTreatments.surgicalKits[item:getFullType()].useTime
     return o
 end

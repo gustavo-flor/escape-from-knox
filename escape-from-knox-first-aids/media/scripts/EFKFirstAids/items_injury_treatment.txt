@@ -36,7 +36,6 @@ module EFK
 		DisplayCategory = InjuryTreatment,
 		Type = Drainable,
 		UseDelta = 0.34,
-		UseWhileEquipped = FALSE,
 		DisplayName = Hemostatic Applicator,
 		Icon = EFK_HemostaticApplicator,
 		Weight = 0.043,
@@ -104,13 +103,40 @@ module EFK
 		Tags = Bandage,
 	}
 
+	item CMSSurgicalKit
+	{
+		DisplayCategory = InjuryTreatment,
+		Weight = 0.4,
+		Type = Drainable,
+		UseDelta = 0.2,
+		DisplayName = CMS Surgical Kit,
+		Icon = EFK_CMSSurgicalKit,
+		Tooltip = Tooltip_UseOnHealthPanel,
+		WorldStaticModel = Bandage,
+		Medical = TRUE,
+		Tags = SurgicalKit,
+	}
+
+	item Surv12FieldSurgicalKit
+	{
+		DisplayCategory = InjuryTreatment,
+		Weight = 1.2,
+		Type = Drainable,
+		UseDelta = 0.06666,
+		DisplayName = Surv12 Field Surgical Kit,
+		Icon = EFK_CMSSurgicalKit,
+		Tooltip = Tooltip_UseOnHealthPanel,
+		WorldStaticModel = Bandage,
+		Medical = TRUE,
+		Tags = SurgicalKit,
+	}
+
 	item AnalginPainkillers
 	{
 		DisplayCategory = Drug,
 		Weight = 0.01,
 		Type = Drainable,
 		UseDelta = 0.25,
-		UseWhileEquipped = FALSE,
 		DisplayName = Analgin Painkillers,
 		Icon = EFK_AnalginPainkillers,
 		Tooltip = Tooltip_Painkillers,
@@ -125,7 +151,6 @@ module EFK
 		DisplayCategory = Drug,
 		Weight = 0.07,
 		Type = Normal,
-		UseWhileEquipped = FALSE,
 		DisplayName = Augmentin Antibiotic Pills,
 		Icon = EFK_AugmentinAntibioticPills,
 		Tooltip = Tooltip_Painkillers,
@@ -141,7 +166,6 @@ module EFK
 		Weight = 0.07,
 		Type = Drainable,
 		UseDelta = 0.06666,
-		UseWhileEquipped = FALSE,
 		DisplayName = Ibuprofen Painkillers,
 		Icon = EFK_IbuprofenPainkillers,
 		Tooltip = Tooltip_Painkillers,
@@ -157,7 +181,6 @@ module EFK
 		Weight = 0.016,
 		Type = Drainable,
 		UseDelta = 0.1,
-		UseWhileEquipped = FALSE,
 		DisplayName = Golden Star Balm,
 		Icon = EFK_GoldenStarBalm,
 		Tooltip = Tooltip_Painkillers,

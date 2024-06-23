@@ -22,6 +22,19 @@ module EFK
 		AcceptItemFunction = AcceptItemFunction.InjectorCase,
 	}
 
+	item MorphineInjector
+	{
+		DisplayCategory = Drug,
+		Type = Normal,
+		DisplayName = Morphine Injector,
+		Icon = EFK_MorphineInjector,
+		Weight = 0.05,
+		Tooltip = Tooltip_UseOnHealthPanel,
+		Medical = TRUE,
+		WorldStaticModel = Pen,
+		Tags = Injector,
+	}
+
 	item PropitalInjector
 	{
 		DisplayCategory = Stimulant,

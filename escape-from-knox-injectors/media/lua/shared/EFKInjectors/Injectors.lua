@@ -2,6 +2,7 @@ Injectors = {}
 
 Injectors.items = {
     ["EFK.ZagustinInjector"] = {
+        spawnChance = 0.5,
         perform = function(character)
             local bodyParts = character:getBodyDamage():getBodyParts()
             for i=0, bodyParts:size()-1 do
@@ -17,6 +18,7 @@ Injectors.items = {
         end
     },
     ["EFK.SJ1Injector"] = {
+        spawnChance = 0.5,
         perform = function(character)
             local stats = character:getStats()
             stats:setStress(stats:getStress() - 0.2)
@@ -31,6 +33,7 @@ Injectors.items = {
         end
     },
     ["EFK.PropitalInjector"] = {
+        spawnChance = 0.5,
         perform = function(character)
             -- health regeneration
             local regenMaxDuration = 30
@@ -49,6 +52,23 @@ Injectors.items = {
         
             -- on painkillers
             local painkillersMaxDuration = 24
+            local painkillersDuration = 0
+            local function onPainkillers()
+                character:getBodyDamage():JustTookPainMeds()
+                painkillersDuration = painkillersDuration + 1
+                if painkillersDuration >= painkillersMaxDuration then
+                    Events.EveryOneMinute.Remove(onPainkillers)
+                    painkillersDuration = 0
+                end
+            end
+            Events.EveryOneMinute.Add(onPainkillers)
+        end
+    },
+    ["EFK.MorphineInjector"] = {
+        spawnChance = 0.5,
+        perform = function(character)        
+            -- on painkillers
+            local painkillersMaxDuration = 30
             local painkillersDuration = 0
             local function onPainkillers()
                 character:getBodyDamage():JustTookPainMeds()
