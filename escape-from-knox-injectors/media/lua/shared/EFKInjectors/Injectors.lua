@@ -38,13 +38,10 @@ Injectors.items = {
     ["EFK.PropitalInjector"] = {
         spawnChance = 0.5,
         perform = function(character)
-            -- health regeneration
             local function healthRegeneration()
                 character:getBodyDamage():AddGeneralHealth(2.4)
             end
             EventUtil.EveryOneMinuteUntil(healthRegeneration, 30)
-        
-            -- on painkillers
             local function onPainkillers()
                 character:getBodyDamage():JustTookPainMeds()
             end
@@ -56,8 +53,6 @@ Injectors.items = {
         perform = function(character)
             CharacterUtil.addHunger(character, 0.1)
             CharacterUtil.addThirst(character, 0.15)
-            
-            -- on painkillers
             local function onPainkillers()
                 character:getBodyDamage():JustTookPainMeds()
             end

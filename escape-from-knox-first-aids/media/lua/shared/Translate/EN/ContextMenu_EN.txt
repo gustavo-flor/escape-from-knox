@@ -5,4 +5,5 @@ ContextMenu_EN = {
     ContextMenu_Apply_Medkit = "Heal",
     ContextMenu_Surgical_Kit = "Surgical Kit",
     ContextMenu_Surgery = "Surgery",
+    ContextMenu_Use_Splint = "Use Splint",
 }

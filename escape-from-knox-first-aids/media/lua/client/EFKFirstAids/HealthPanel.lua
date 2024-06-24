@@ -1,6 +1,7 @@
 require "TimedActions/EFKApplyHemostatic"
 require "TimedActions/EFKUseMedkit"
 require "TimedActions/EFKSurgery"
+require "TimedActions/EFKUseSplint"
 
 -- hemostatics
 
@@ -129,7 +130,6 @@ local function addSurgeryOption(playerId, context, items)
     local deadBodyParts = {}
     for i=0, BodyPartType.ToIndex(BodyPartType.MAX)-1 do
         local bodyPart = bodyParts:get(i)
-        local health = bodyPart:getHealth()
         if bodyPart:getHealth() == 0 then
             hasDeadPart = true
             table.insert(deadBodyParts, bodyPart)
@@ -153,3 +153,51 @@ end
 
 Events.OnFillInventoryObjectContextMenu.Add(addSurgeryOption)
 
+-- splints
+
+local function queueUseSplint(player, item, bodyPart)
+    ISTimedActionQueue.add(EFKUseSplint:new(player, item, bodyPart))
+end
+
+local function addUseSplintOption(playerId, context, items)
+    local hasSplint = false
+    local splintItems = {}
+    for _,item in ipairs(items) do
+        if instanceof(item, "InventoryItem") and item:hasTag("Splint") then
+            hasSplint = true
+            table.insert(splintItems, item)
+        end
+    end
+
+    if not hasSplint then 
+        return 
+    end
+
+    local player = getSpecificPlayer(playerId)
+    local bodyParts = player:getBodyDamage():getBodyParts()
+    local hasFracture = false
+    local fracturedBodyParts = {}
+    for i=0, BodyPartType.ToIndex(BodyPartType.MAX)-1 do
+        local bodyPart = bodyParts:get(i)
+        if bodyPart:getFractureTime() > 0 and bodyPart:getHealth() > 0 then
+            hasFracture = true
+            table.insert(fracturedBodyParts, bodyPart)
+        end
+    end
+
+    if not hasFracture then 
+        return 
+    end
+
+    for _,item in ipairs(splintItems) do
+        local option = context:addOption(getText("ContextMenu_Use_Splint"), nil)
+        local subMenu = context:getNew(context)
+        context:addSubMenu(option, subMenu)
+        for _,bodyPart in ipairs(fracturedBodyParts) do
+            local label = BodyPartType.getDisplayName(bodyPart:getType())
+            subMenu:addOption(label, player, queueUseSplint, item, bodyPart)
+        end
+    end
+end
+
+Events.OnFillInventoryObjectContextMenu.Add(addUseSplintOption)

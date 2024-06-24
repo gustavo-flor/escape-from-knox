@@ -5,4 +5,5 @@ ContextMenu_PTBR = {
     ContextMenu_Apply_Medkit = "Curar",
     ContextMenu_Surgical_Kit = "Kit Cirúrgico",
     ContextMenu_Surgery = "Cirurgia",
+    ContextMenu_Use_Splint = "Usar Tala",
 }

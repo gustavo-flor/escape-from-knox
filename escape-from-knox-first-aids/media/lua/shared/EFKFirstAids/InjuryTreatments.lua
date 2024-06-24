@@ -32,6 +32,17 @@ InjuryTreatments.hemostatics = {
     }
 }
 
+InjuryTreatments.splints = {
+    ["EFK.ImmobilizingSplint"] = {
+        useTime = 5 * ticksPerSecond,
+        spawnChance = {}
+    },
+    ["EFK.AluminumSplint"] = {
+        useTime = 3 * ticksPerSecond,
+        spawnChance = {}
+    }
+}
+
 InjuryTreatments.bandages = {
     ["EFK.AsepticBandage"] = {
         spawnChance = {}
