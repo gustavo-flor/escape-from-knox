@@ -1,3 +1,6 @@
+require "Util/CharacterUtil"
+require "Util/EventUtil"
+
 Injectors = {}
 
 Injectors.items = {
@@ -36,49 +39,29 @@ Injectors.items = {
         spawnChance = 0.5,
         perform = function(character)
             -- health regeneration
-            local regenMaxDuration = 30
-            local regenDuration = 0
-            local regenAmount = 2.4
             local function healthRegeneration()
-                local heal = regenAmount
-                character:getBodyDamage():AddGeneralHealth(heal)
-                regenDuration = regenDuration + 1
-                if regenDuration >= regenMaxDuration then
-                    Events.EveryOneMinute.Remove(healthRegeneration)
-                    regenDuration = 0
-                end
+                character:getBodyDamage():AddGeneralHealth(2.4)
             end
-            Events.EveryOneMinute.Add(healthRegeneration)
+            EventUtil.EveryOneMinuteUntil(healthRegeneration, 30)
         
             -- on painkillers
-            local painkillersMaxDuration = 24
-            local painkillersDuration = 0
             local function onPainkillers()
                 character:getBodyDamage():JustTookPainMeds()
-                painkillersDuration = painkillersDuration + 1
-                if painkillersDuration >= painkillersMaxDuration then
-                    Events.EveryOneMinute.Remove(onPainkillers)
-                    painkillersDuration = 0
-                end
             end
-            Events.EveryOneMinute.Add(onPainkillers)
+            EventUtil.EveryOneMinuteUntil(onPainkillers, 24)
         end
     },
     ["EFK.MorphineInjector"] = {
         spawnChance = 0.5,
-        perform = function(character)        
+        perform = function(character)
+            CharacterUtil.addHunger(character, 0.1)
+            CharacterUtil.addThirst(character, 0.15)
+            
             -- on painkillers
-            local painkillersMaxDuration = 30
-            local painkillersDuration = 0
             local function onPainkillers()
                 character:getBodyDamage():JustTookPainMeds()
-                painkillersDuration = painkillersDuration + 1
-                if painkillersDuration >= painkillersMaxDuration then
-                    Events.EveryOneMinute.Remove(onPainkillers)
-                    painkillersDuration = 0
-                end
             end
-            Events.EveryOneMinute.Add(onPainkillers)
+            EventUtil.EveryOneMinuteUntil(onPainkillers, 30)
         end
     }
 }
