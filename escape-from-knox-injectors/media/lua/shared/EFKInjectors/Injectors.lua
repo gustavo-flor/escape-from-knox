@@ -1,5 +1,6 @@
-require "Util/CharacterUtil"
-require "Util/EventUtil"
+require "EFKInjectors/Util/CharacterUtil"
+require "EFKInjectors/Util/EventUtil"
+require "EFKInjectors/Util/BodyDamageUtil"
 
 Injectors = {}
 
@@ -39,24 +40,24 @@ Injectors.items = {
         spawnChance = 0.5,
         perform = function(character)
             local function healthRegeneration()
-                character:getBodyDamage():AddGeneralHealth(2.4)
+                EFKInjectorsBodyDamageUtil.addHealthOnDamagedBodyParts(character:getBodyDamage(), 2.4)
             end
-            EventUtil.EveryOneMinuteUntil(healthRegeneration, 30)
+            EFKInjectorsEventUtil.EveryOneMinuteUntil(healthRegeneration, 30)
             local function onPainkillers()
                 character:getBodyDamage():JustTookPainMeds()
             end
-            EventUtil.EveryOneMinuteUntil(onPainkillers, 24)
+            EFKInjectorsEventUtil.EveryOneMinuteUntil(onPainkillers, 24)
         end
     },
     ["EFK.MorphineInjector"] = {
         spawnChance = 0.5,
         perform = function(character)
-            CharacterUtil.addHunger(character, 0.1)
-            CharacterUtil.addThirst(character, 0.15)
+            EFKInjectorsCharacterUtil.addHunger(character, 0.1)
+            EFKInjectorsCharacterUtil.addThirst(character, 0.15)
             local function onPainkillers()
                 character:getBodyDamage():JustTookPainMeds()
             end
-            EventUtil.EveryOneMinuteUntil(onPainkillers, 30)
+            EFKInjectorsEventUtil.EveryOneMinuteUntil(onPainkillers, 30)
         end
     }
 }

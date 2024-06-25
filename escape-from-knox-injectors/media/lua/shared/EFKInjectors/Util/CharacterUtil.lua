@@ -1,9 +1,9 @@
-CharacterUtil = {}
+EFKInjectorsCharacterUtil = {}
 
-function CharacterUtil.addThirst(character, amount)
+function EFKInjectorsCharacterUtil.addThirst(character, amount)
     character:getStats():setThirst(character:getStats():getThirst() + amount)
 end
 
-function CharacterUtil.addHunger(character, amount)
+function EFKInjectorsCharacterUtil.addHunger(character, amount)
     character:getStats():setHunger(character:getStats():getHunger() + amount)
 end

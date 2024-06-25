@@ -1,4 +1,4 @@
-require "TimedActions/EFKApplyInjector"
+require "EFKInjectors/TimedActions/EFKApplyInjector"
 
 local function queueApplyInjector(player, item)
     ISTimedActionQueue.add(EFKApplyInjector:new(player, item))

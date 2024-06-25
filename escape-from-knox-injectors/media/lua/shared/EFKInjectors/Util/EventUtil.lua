@@ -1,6 +1,6 @@
-EventUtil = {}
+EFKInjectorsEventUtil = {}
 
-function EventUtil.EveryOneMinuteUntil(callback, maxDuration)
+function EFKInjectorsEventUtil.EveryOneMinuteUntil(callback, maxDuration)
     local duration = 0
     local function listener()
         callback()

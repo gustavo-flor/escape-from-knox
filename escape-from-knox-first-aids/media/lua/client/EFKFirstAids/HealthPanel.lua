@@ -1,7 +1,9 @@
-require "TimedActions/EFKApplyHemostatic"
-require "TimedActions/EFKUseMedkit"
-require "TimedActions/EFKSurgery"
-require "TimedActions/EFKUseSplint"
+require "EFKFirstAids/TimedActions/EFKApplyHemostatic"
+require "EFKFirstAids/TimedActions/EFKUseMedkit"
+require "EFKFirstAids/TimedActions/EFKSurgery"
+require "EFKFirstAids/TimedActions/EFKUseSplint"
+require "EFKFirstAids/Util/ItemUtil"
+require "EFKFirstAids/Util/BodyDamageUtil"
 
 -- hemostatics
 
@@ -10,36 +12,15 @@ local function queueApplyHemostatic(player, item, bodyPart)
 end
 
 local function addApplyHemostaticOption(playerId, context, items)
-    local hasHemostatic = false
-    local hemostaticItems = {}
-    for _,item in ipairs(items) do
-        if instanceof(item, "InventoryItem") and item:hasTag("Hemostatic") then
-            hasHemostatic = true
-            table.insert(hemostaticItems, item)
-        end
-    end
-
-    if not hasHemostatic then 
+    local hemostaticItems = EFKFirstAidsItemUtil.getInventoryItemsByTag(items, "Hemostatic")
+    if #hemostaticItems == 0 then 
         return 
     end
-
     local player = getSpecificPlayer(playerId)
-    local bodyParts = player:getBodyDamage():getBodyParts()
-
-    local hasHeavyBleeding = false
-    local heavyBleedingBodyParts = {}
-    for i=0, BodyPartType.ToIndex(BodyPartType.MAX)-1 do
-        local bodyPart = bodyParts:get(i)
-        if bodyPart:bleeding() and bodyPart:deepWounded() then
-            hasHeavyBleeding = true
-            table.insert(heavyBleedingBodyParts, bodyPart)
-        end
-    end
-
-    if not hasHeavyBleeding then 
+    local heavyBleedingBodyParts = EFKFirstAidsBodyDamageUtil.getHeavyBleedingBodyParts(player:getBodyDamage())
+    if #heavyBleedingBodyParts == 0 then 
         return 
     end
-
     for _,item in ipairs(hemostaticItems) do
         local option = context:addOption(getText("ContextMenu_Apply_Hemostatic"), nil)
         local subMenu = context:getNew(context)
@@ -60,37 +41,15 @@ local function queueUseMedkit(player, item, bodyPart)
 end
 
 local function addUseMedkitOption(playerId, context, items)
-    local hasMedkit = false
-    local medkitItems = {}
-    for _,item in ipairs(items) do
-        if instanceof(item, "InventoryItem") and item:hasTag("Medkit") then
-            hasMedkit = true
-            table.insert(medkitItems, item)
-        end
-    end
-
-    if not hasMedkit then 
+    local medkitItems = EFKFirstAidsItemUtil.getInventoryItemsByTag(items, "Medkit")
+    if #medkitItems == 0 then 
         return 
     end
-
     local player = getSpecificPlayer(playerId)
-    local bodyParts = player:getBodyDamage():getBodyParts()
-    local maxHealth = 100
-    local hasDamage = false
-    local damagedBodyParts = {}
-    for i=0, BodyPartType.ToIndex(BodyPartType.MAX)-1 do
-        local bodyPart = bodyParts:get(i)
-        local health = bodyPart:getHealth()
-        if health > 0 and health < maxHealth then
-            hasDamage = true
-            table.insert(damagedBodyParts, bodyPart)
-        end
-    end
-
-    if not hasDamage then 
+    local damagedBodyParts = EFKFirstAidsBodyDamageUtil.getDamagedBodyParts(player:getBodyDamage())
+    if #damagedBodyParts == 0 then 
         return 
     end
-
     for _,item in ipairs(medkitItems) do
         local option = context:addOption(getText("ContextMenu_Apply_Medkit"), nil)
         local subMenu = context:getNew(context)
@@ -111,35 +70,15 @@ local function queueSurgery(player, item, bodyPart)
 end
 
 local function addSurgeryOption(playerId, context, items)
-    local hasSurgicalKit = false
-    local surgicalKitItems = {}
-    for _,item in ipairs(items) do
-        if instanceof(item, "InventoryItem") and item:hasTag("SurgicalKit") then
-            hasSurgicalKit = true
-            table.insert(surgicalKitItems, item)
-        end
-    end
-
-    if not hasSurgicalKit then 
+    local surgicalKitItems = EFKFirstAidsItemUtil.getInventoryItemsByTag(items, "SurgicalKit")
+    if #surgicalKitItems == 0 then 
         return 
     end
-
     local player = getSpecificPlayer(playerId)
-    local bodyParts = player:getBodyDamage():getBodyParts()
-    local hasDeadPart = false
-    local deadBodyParts = {}
-    for i=0, BodyPartType.ToIndex(BodyPartType.MAX)-1 do
-        local bodyPart = bodyParts:get(i)
-        if bodyPart:getHealth() == 0 then
-            hasDeadPart = true
-            table.insert(deadBodyParts, bodyPart)
-        end
-    end
-
-    if not hasDeadPart then 
+    local deadBodyParts = EFKFirstAidsBodyDamageUtil.getDeadBodyParts(player:getBodyDamage())
+    if #deadBodyParts == 0 then 
         return 
     end
-
     for _,item in ipairs(surgicalKitItems) do
         local option = context:addOption(getText("ContextMenu_Surgery"), nil)
         local subMenu = context:getNew(context)
@@ -160,35 +99,15 @@ local function queueUseSplint(player, item, bodyPart)
 end
 
 local function addUseSplintOption(playerId, context, items)
-    local hasSplint = false
-    local splintItems = {}
-    for _,item in ipairs(items) do
-        if instanceof(item, "InventoryItem") and item:hasTag("Splint") then
-            hasSplint = true
-            table.insert(splintItems, item)
-        end
-    end
-
-    if not hasSplint then 
+    local splintItems = EFKFirstAidsItemUtil.getInventoryItemsByTag(items, "Splint")
+    if #splintItems == 0 then 
         return 
     end
-
     local player = getSpecificPlayer(playerId)
-    local bodyParts = player:getBodyDamage():getBodyParts()
-    local hasFracture = false
-    local fracturedBodyParts = {}
-    for i=0, BodyPartType.ToIndex(BodyPartType.MAX)-1 do
-        local bodyPart = bodyParts:get(i)
-        if bodyPart:getFractureTime() > 0 and bodyPart:getHealth() > 0 then
-            hasFracture = true
-            table.insert(fracturedBodyParts, bodyPart)
-        end
-    end
-
-    if not hasFracture then 
+    local fracturedBodyParts = EFKFirstAidsBodyDamageUtil.getFracturedBodyParts(player:getBodyDamage())
+    if #fracturedBodyParts == 0 then 
         return 
     end
-
     for _,item in ipairs(splintItems) do
         local option = context:addOption(getText("ContextMenu_Use_Splint"), nil)
         local subMenu = context:getNew(context)
