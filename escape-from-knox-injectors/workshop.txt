@@ -1,0 +1,5 @@
+version=0.0.1
+title=Escape From Knox: Injectors
+description=Adding new injectors features based on Escape From Tarkov.
+tags=
+visibility=public
