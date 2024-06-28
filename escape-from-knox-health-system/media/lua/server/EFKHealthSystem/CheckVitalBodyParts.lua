@@ -11,6 +11,7 @@ local function checkVitalBodyParts(player)
         local bodyPart = bodyParts:get(i)
         if isVital(bodyPart) and bodyPart:getHealth() == 0 then
             player:setHealth(0);
+            return
         end
     end
 end
