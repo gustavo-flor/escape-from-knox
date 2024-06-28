@@ -1,5 +1,6 @@
-version=0.0.1
+version=1
+id=3277489122
 title=Escape From Knox: First Aids
 description=Adding new first aid features based on Escape From Tarkov.
-tags=
-visibility=public
+tags=Build 41;Hardmode;Items;Realistic
+visibility=friendsOnly
