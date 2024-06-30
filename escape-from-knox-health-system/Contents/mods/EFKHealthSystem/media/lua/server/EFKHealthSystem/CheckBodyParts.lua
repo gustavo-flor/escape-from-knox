@@ -4,7 +4,10 @@ local function isVital(bodyPart)
         or bodyPart:getType() == BodyPartType.Torso_Upper
 end
 
-local function checkVitalBodyParts(player)
+local function checkBodyParts(player)
+    if player:getHealth() == 0 then
+        return
+    end
     local bodyDamage = player:getBodyDamage()
     local bodyParts = bodyDamage:getBodyParts()
     for i=0, BodyPartType.ToIndex(BodyPartType.MAX)-1 do
@@ -16,4 +19,4 @@ local function checkVitalBodyParts(player)
     end
 end
 
-Events.OnPlayerUpdate.Add(checkVitalBodyParts)
+Events.OnPlayerUpdate.Add(checkBodyParts)
