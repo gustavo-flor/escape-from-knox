@@ -1,6 +1,7 @@
 require 'Items/ProceduralDistributions'
 require "EFKInjectors/InjuryTreatments"
 require "EFKInjectors/Medkits"
+require "EFKInjectors/Drugs"
 
 local function setProceduralDistribution(placeName, itemName, spawnChance)
     local places = ProceduralDistributions["list"]
@@ -40,13 +41,13 @@ for rarity, places in pairs(placesByRarity) do
         for itemName, item in pairs(InjuryTreatments.bandages) do
             setProceduralDistribution(place, itemName, item.spawnChance[rarity] or 0)
         end
-        for itemName, item in pairs(InjuryTreatments.painkillers) do
-            setProceduralDistribution(place, itemName, item.spawnChance[rarity] or 0)
-        end
         for itemName, item in pairs(InjuryTreatments.surgicalKits) do
             setProceduralDistribution(place, itemName, item.spawnChance[rarity] or 0)
         end
         for itemName, item in pairs(Medkits.items) do
+            setProceduralDistribution(place, itemName, item.spawnChance[rarity] or 0)
+        end
+        for itemName, item in pairs(Drugs.painkillers) do
             setProceduralDistribution(place, itemName, item.spawnChance[rarity] or 0)
         end
     end

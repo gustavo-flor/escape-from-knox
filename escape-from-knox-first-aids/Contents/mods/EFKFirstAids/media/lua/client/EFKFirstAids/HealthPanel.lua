@@ -120,3 +120,22 @@ local function addUseSplintOption(playerId, context, items)
 end
 
 Events.OnFillInventoryObjectContextMenu.Add(addUseSplintOption)
+
+-- painkillers
+
+local function queueUsePainkiller(player, item, bodyPart)
+    ISTimedActionQueue.add(EFKUsePainkiller:new(player, item, bodyPart))
+end
+
+local function addUsePainkillerOption(playerId, context, items)
+    local painkillerItems = EFKFirstAidsItemUtil.getInventoryItemsByTag(items, "Painkiller")
+    if #painkillerItems == 0 then 
+        return 
+    end
+    local player = getSpecificPlayer(playerId)
+    for _,item in ipairs(painkillerItems) do
+        context:addOption(getText("ContextMenu_Use_Painkiller"), player, queueUsePainkiller, item)
+    end
+end
+
+Events.OnFillInventoryObjectContextMenu.Add(addUsePainkillerOption)
