@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-    echo "Error: Path to Zomboid's mods folder is required."
-    echo "Usage: $0 <path-to-zomboid-mods-folder>"
+    echo "Error: Path to Zomboid's folder is required."
+    echo "Usage: $0 <path-to-zomboid-folder>"
     exit 1
 fi
 
@@ -10,16 +10,19 @@ ZOMBOID_MODS_FOLDER="$1/mods"
 ZOMBOID_WORKSHOP_FOLDER="$1/Workshop"
 EFK_HOME="$(cd "$(dirname "$0")" && pwd)"
 
-mkdir "$ZOMBOID_MODS_FOLDER/EFKFirstAids"
-ln -s "$EFK_HOME/escape-from-knox-first-aids/Contents/mods/EFKFirstAids" "$ZOMBOID_MODS_FOLDER/EFKFirstAids"
-mkdir "$ZOMBOID_MODS_FOLDER/EFKInjectors"
-ln -s "$EFK_HOME/escape-from-knox-injectors/Contents/mods/EFKInjectors" "$ZOMBOID_MODS_FOLDER/EFKInjectors"
-mkdir "$ZOMBOID_MODS_FOLDER/EFKHealthSystem"
-ln -s "$EFK_HOME/escape-from-knox-health-system/Contents/mods/EFKHealthSystem" "$ZOMBOID_MODS_FOLDER/EFKHealthSystem"
+declare -A MODS=(
+    ["escape-from-knox-first-aids"]="EFKFirstAids"
+    ["escape-from-knox-injectors"]="EFKInjectors"
+    ["escape-from-knox-health-system"]="EFKHealthSystem"
+    ["escape-from-knox-extraction-mode"]="EFKExtractionMode"
+)
 
-mkdir "$ZOMBOID_WORKSHOP_FOLDER/escape-from-knox-first-aids"
-ln -s "$EFK_HOME/escape-from-knox-first-aids" "$ZOMBOID_WORKSHOP_FOLDER/escape-from-knox-first-aids"
-mkdir "$ZOMBOID_WORKSHOP_FOLDER/escape-from-knox-injectors"
-ln -s "$EFK_HOME/escape-from-knox-injectors" "$ZOMBOID_WORKSHOP_FOLDER/escape-from-knox-injectors"
-mkdir "$ZOMBOID_WORKSHOP_FOLDER/escape-from-knox-health-system"
-ln -s "$EFK_HOME/escape-from-knox-health-system" "$ZOMBOID_WORKSHOP_FOLDER/escape-from-knox-health-system"
+for mod_path in "${!MODS[@]}"; do
+    mod_name="${MODS[$mod_path]}"
+    
+    mkdir -p "$ZOMBOID_MODS_FOLDER/$mod_name"
+    ln -s "$EFK_HOME/$mod_path/Contents/mods/$mod_name" "$ZOMBOID_MODS_FOLDER/$mod_name"
+    
+    mkdir -p "$ZOMBOID_WORKSHOP_FOLDER/$mod_path"
+    ln -s "$EFK_HOME/$mod_path" "$ZOMBOID_WORKSHOP_FOLDER/$mod_path"
+done
