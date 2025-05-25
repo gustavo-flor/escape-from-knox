@@ -20,9 +20,6 @@ declare -A MODS=(
 for mod_path in "${!MODS[@]}"; do
     mod_name="${MODS[$mod_path]}"
     
-    mkdir -p "$ZOMBOID_MODS_FOLDER/$mod_name"
     ln -s "$EFK_HOME/$mod_path/Contents/mods/$mod_name" "$ZOMBOID_MODS_FOLDER/$mod_name"
-    
-    mkdir -p "$ZOMBOID_WORKSHOP_FOLDER/$mod_path"
     ln -s "$EFK_HOME/$mod_path" "$ZOMBOID_WORKSHOP_FOLDER/$mod_path"
 done

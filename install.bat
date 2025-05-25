@@ -21,9 +21,8 @@ set modName[3]=EFKExtractionMode
 set modsCount=4
 
 for /L %%i in (0,1,%modsCount%-1) do (
-    mklink /J "%zomboidFolder%/mods/!modName[%%i]!" "%efkHome%!modPath[%%i]!/Contents/mods/!modName[%%i]!"
-    
-    mklink /J "%zomboidFolder%/Workshop/!modPath[%%i]!" "%efkHome%!modPath[%%i]!"
+    mklink /J "%zomboidFolder%\mods\!modName[%%i]!" "%efkHome%\!modPath[%%i]!\Contents\mods"
+    mklink /J "%zomboidFolder%\Workshop\!modPath[%%i]!" "%efkHome%\!modPath[%%i]!"
 )
 
 endlocal
