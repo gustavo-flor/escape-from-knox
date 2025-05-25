@@ -1,0 +1,6 @@
+version=1
+id=
+title=Escape From Knox
+description=Step into a hardcore survival experience inspired by Escape from Tarkov, now within the world of Project Zomboid.
+tags=Build 41;Build 42;Hardcore;Realistic;WIP
+visibility=friendsOnly

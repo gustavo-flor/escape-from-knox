@@ -1,0 +1,11 @@
+ContextMenu = {
+    ContextMenu_Apply_Injector = "Aplicar Injetor",
+    ContextMenu_Hemostatic = "Hemostático",
+    ContextMenu_Apply_Hemostatic = "Aplicar Hemostático",
+    ContextMenu_Medkit = "Kit Médico",
+    ContextMenu_Apply_Medkit = "Curar",
+    ContextMenu_Surgical_Kit = "Kit Cirúrgico",
+    ContextMenu_Surgery = "Cirurgia",
+    ContextMenu_Use_Splint = "Usar Tala",
+    ContextMenu_Use_Painkiller = "Usar Analgésico",
+}

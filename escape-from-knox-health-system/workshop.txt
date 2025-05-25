@@ -1,6 +1,0 @@
-version=1
-id=3277488607
-title=Escape From Knox: Health System
-description=Adding new health system features based on Escape From Tarkov.
-tags=Build 41;Hardmode;Realistic
-visibility=friendsOnly

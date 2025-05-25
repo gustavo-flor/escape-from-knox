@@ -1,6 +1,0 @@
-version=1
-id=3277489471
-title=Escape From Knox: Injectors
-description=Adding new injectors features based on Escape From Tarkov.
-tags=Build 41;Hardmode;Items;Realistic
-visibility=friendsOnly

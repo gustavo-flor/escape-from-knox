@@ -1,6 +1,0 @@
-version=1
-id=
-title=Escape From Knox: Extraction Mode
-description=Adding a new extraction-based playstyle inspired by Escape From Tarkov.
-tags=Build 41;Hardmode;Realistic
-visibility=friendsOnly

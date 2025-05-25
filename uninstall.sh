@@ -9,16 +9,5 @@ fi
 ZOMBOID_MODS_FOLDER="$1/mods"
 ZOMBOID_WORKSHOP_FOLDER="$1/Workshop"
 
-declare -A MODS=(
-    ["escape-from-knox-first-aids"]="EFKFirstAids"
-    ["escape-from-knox-injectors"]="EFKInjectors"
-    ["escape-from-knox-health-system"]="EFKHealthSystem"
-    ["escape-from-knox-extraction-mode"]="EFKExtractionMode"
-)
-
-for mod_path in "${!MODS[@]}"; do
-    mod_name="${MODS[$mod_path]}"
-    
-    rm -rf "$ZOMBOID_MODS_FOLDER/$mod_name"
-    rm -rf "$ZOMBOID_WORKSHOP_FOLDER/$mod_path"
-done 
+rm -rf "$ZOMBOID_MODS_FOLDER/EFK"
+rm -rf "$ZOMBOID_WORKSHOP_FOLDER/EFK"

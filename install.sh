@@ -10,16 +10,5 @@ ZOMBOID_MODS_FOLDER="$1/mods"
 ZOMBOID_WORKSHOP_FOLDER="$1/Workshop"
 EFK_HOME="$(cd "$(dirname "$0")" && pwd)"
 
-declare -A MODS=(
-    ["escape-from-knox-first-aids"]="EFKFirstAids"
-    ["escape-from-knox-injectors"]="EFKInjectors"
-    ["escape-from-knox-health-system"]="EFKHealthSystem"
-    ["escape-from-knox-extraction-mode"]="EFKExtractionMode"
-)
-
-for mod_path in "${!MODS[@]}"; do
-    mod_name="${MODS[$mod_path]}"
-    
-    ln -s "$EFK_HOME/$mod_path/Contents/mods/$mod_name" "$ZOMBOID_MODS_FOLDER/$mod_name"
-    ln -s "$EFK_HOME/$mod_path" "$ZOMBOID_WORKSHOP_FOLDER/$mod_path"
-done
+ln -s "$EFK_HOME/src/Contents/mods/EFK" "$ZOMBOID_MODS_FOLDER/EFK"
+ln -s "$EFK_HOME/src" "$ZOMBOID_WORKSHOP_FOLDER/EFK"

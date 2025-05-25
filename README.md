@@ -1,12 +1,10 @@
-# Project Zomboid: Escape From Knox
+# Escape From Knox
 
-A Zomboid mod based on Escape From Tarkov.
+Step into a hardcore survival experience inspired by Escape from Tarkov, now within the world of Project Zomboid.
 
-## Modules
+## Usage
 
-- Health System
-- First Aids
-- Injectors and Stimulants
+> WIP...
 
 ## Development
 
@@ -28,17 +26,3 @@ A Zomboid mod based on Escape From Tarkov.
 ```
 
 > Ex: ./uninstall.sh ~/Zomboid
-
-### Windows
-
-- Install
-
-```sh
-install.bat <path-to-zomboid-folder>
-```
-
-- Uninstall
-
-```sh
-uninstall.bat <path-to-zomboid-folder>
-```

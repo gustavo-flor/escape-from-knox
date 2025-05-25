@@ -1,4 +1,0 @@
-IGUI_EN = {
-    IGUI_ItemCat_Stimulant = "Estimulante",
-    IGUI_ItemCat_Drug = "Droga",
-}
