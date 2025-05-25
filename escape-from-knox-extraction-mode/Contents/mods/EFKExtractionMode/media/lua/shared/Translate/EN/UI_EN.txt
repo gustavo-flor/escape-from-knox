@@ -1,0 +1,4 @@
+UI_EN = {
+    UI_NewGame_EFKExtractionMode = "Escape From Knox",
+    UI_NewGame_EFKExtractionMode_desc = "A challenging extraction-based playstyle. Enter Knox County, gather resources, and find your way to extraction points while avoiding the infected.",
+}
